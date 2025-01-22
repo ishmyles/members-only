@@ -1,5 +1,17 @@
-export const loginUserGet = (req, res) =>
-  res.send("<h1>LOGIN FORM</h1><p>TODO: Login form</p>");
+import { validationResult } from "express-validator";
 
-export const loginUserPost = (req, res) =>
+export const loginUserGet = (req, res) =>
+  res.render("form", { title: "Login", formType: "login" });
+
+export const loginUserPost = (req, res) => {
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    return res.status(302).render("form", {
+      title: "Login",
+      formType: "login",
+      errors: errors.array(),
+    });
+  }
   res.send("[POST] Login user. TODO: Authenticate user session.");
+};

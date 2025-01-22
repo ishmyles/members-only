@@ -1,5 +1,18 @@
-export const createMessageGet = (req, res) =>
-  res.send("<h1>CREATE MSG FORM</h1><p>TODO: Create message form</p>");
+import { validationResult } from "express-validator";
 
-export const createMessagePost = (req, res) =>
+export const createMessageGet = (req, res) =>
+  res.render("form", { title: "Add message", formType: "message" });
+
+export const createMessagePost = (req, res) => {
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    return res.status(302).render("form", {
+      title: "Add message",
+      formType: "message",
+      errors: errors.array(),
+    });
+  }
+
   res.send("[POST] Form submitted. TODO: Save input to DB");
+};

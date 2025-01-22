@@ -3,11 +3,12 @@ import {
   authoriseUserGet,
   authoriseUserPost,
 } from "../controllers/memberController.js";
+import { memberSecretValidator } from "../utils/formValidator.js";
 
 const memberRouter = Router();
 
 memberRouter.get("/join", authoriseUserGet);
 
-memberRouter.post("/join", authoriseUserPost);
+memberRouter.post("/join", memberSecretValidator, authoriseUserPost);
 
 export default memberRouter;

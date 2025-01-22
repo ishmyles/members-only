@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= locals.title %></title>
+    <link rel="stylesheet" href="/styles/form.css">
+</head>
+<body>
+    <% if (locals.errors) { %>
+        <ul>
+            <% errors.forEach(err => { %>
+                <li><%= err.msg %></li>
+            <% }); %>
+        </ul>
+    <% } %>
+    <% if (locals.formType === "login") { %>
+        <%- include('partials/login') %>
+    <% } else if (locals.formType === "signup") { %>
+        <%- include('partials/signup') %>
+    <% } else if (locals.formType === "member") { %>
+        <%- include('partials/member') %>
+    <% } else if (locals.formType === "admin") { %>
+        <%- include('partials/admin') %>
+    <% } else { %>
+        <%- include('partials/message') %>
+    <% } %>
+</body>
+</html>
