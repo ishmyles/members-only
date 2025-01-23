@@ -1,0 +1,37 @@
+<header>
+    <ul>
+        <li>
+            <a href="/">HOME</a>
+        </li>
+        <% if (locals.isLoggedIn) { %>
+        <li>
+            <a href="/member/join">JOIN THE CLUB</a>
+        </li>
+        <li>
+            <a href="/admin/new">BE A MODERATOR</a>
+        </li>
+        <li>
+            <a href="/messages/new">ADD MESSAGE</a>
+        </li>
+        <% } else { %>
+        <li>
+            <a href="/sign-up">SIGN UP</a>
+        </li>
+        <% } %>
+    </ul>
+    <ul>
+        <% if (locals.isLoggedIn) { %>
+            <li>
+                <a href="/logout">LOGOUT</a>
+            </li>
+
+        <% } else { %>
+            <li>
+                <a href="/login">LOGIN</a>
+            </li>
+            <li>
+                <a href="/sign-up">SIGN UP</a>
+            </li>
+        <% } %>
+    </ul>
+</header>

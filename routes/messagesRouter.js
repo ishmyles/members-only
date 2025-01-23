@@ -5,12 +5,13 @@ import {
   deleteMessagePost,
 } from "../controllers/messagesController.js";
 import { messageValidator } from "../utils/formValidator.js";
+import { authRequired } from "../middleware/middleware.js";
 
 const messagesRouter = Router();
 
-messagesRouter.get("/new", createMessageGet);
+messagesRouter.get("/new", authRequired, createMessageGet);
 
-messagesRouter.post("/new", messageValidator, createMessagePost);
+messagesRouter.post("/new", authRequired, messageValidator, createMessagePost);
 
 messagesRouter.post("/delete/:id", deleteMessagePost);
 

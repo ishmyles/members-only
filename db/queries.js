@@ -1,4 +1,5 @@
 import pool from "./pool.js";
+import bcrypt from "bcryptjs";
 
 // USERS
 export const getUsernameById = async (id) => {
@@ -22,6 +23,28 @@ export const updateUserMemberType = async (username, memberType) => {
   } else {
     await pool.query(sqlQuery, [1, username]);
   }
+};
+
+export const createNewUser = async ({
+  username,
+  firstname,
+  lastname,
+  password,
+}) => {
+  const _salt = Number(process.env.SALT_KEY);
+
+  bcrypt.hash(password, _salt, async (err, hashedPassword) => {
+    try {
+      if (err) throw new Error();
+
+      await pool.query(
+        "INSERT INTO Users (username, firstname, lastname, password) VALUES ($1, $2, $3, $4)",
+        [username, firstname, lastname, hashedPassword]
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  });
 };
 
 // MESSAGES

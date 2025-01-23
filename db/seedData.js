@@ -46,12 +46,14 @@ INSERT INTO MemberTypes (id, type) VALUES
 (1, 'Guest'),
 (2, 'Member');
 
-INSERT INTO Users (username, firstname, lastname, password, membertype)
-VALUES 
-('ishmyles', 'Myles', 'GG', 'Test', 0);
+SELECT * FROM MemberTypes;`;
 
-SELECT * FROM MemberTypes;
-`;
+/*
+  // NOT FOR USE WITH PASSPORT
+  INSERT INTO Users (username, firstname, lastname, password, membertype)
+  VALUES 
+  ('ishmyles', 'Myles', 'GG', 'Test', 0);
+*/
 
 const populateData = async () => {
   const client = new Client({

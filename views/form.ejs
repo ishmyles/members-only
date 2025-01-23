@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= locals.title %></title>
+    <link rel="stylesheet" href="/styles/header.css">
     <link rel="stylesheet" href="/styles/form.css">
 </head>
 <body>
+    <%- include('partials/header') %>
     <% if (locals.errors) { %>
         <ul>
             <% errors.forEach(err => { %>

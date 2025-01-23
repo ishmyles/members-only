@@ -1,10 +1,15 @@
 import { validationResult } from "express-validator";
 import asyncWrap from "express-async-handler";
+import { createNewUser } from "../db/queries.js";
 
 export const createUserGet = (req, res) =>
-  res.render("form", { title: "Sign up", formType: "signup" });
+  res.render("form", {
+    title: "Sign up",
+    formType: "signup",
+    isLoggedIn: req.isAuthenticated(),
+  });
 
-export const createUserPost = asyncWrap((req, res) => {
+export const createUserPost = asyncWrap(async (req, res) => {
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
@@ -12,8 +17,10 @@ export const createUserPost = asyncWrap((req, res) => {
       title: "Sign up",
       formType: "signup",
       errors: errors.array(),
+      isLoggedIn: req.isAuthenticated(),
     });
   }
 
-  res.send("[POST] Form submitted. TODO: Save input to DB");
+  await createNewUser(req.body);
+  res.redirect("/login");
 });
