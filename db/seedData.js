@@ -49,7 +49,6 @@ INSERT INTO MemberTypes (id, type) VALUES
 SELECT * FROM MemberTypes;
 `;
 
-console.log(process.env.DB_CONN);
 const populateData = async () => {
   const client = new Client({
     connectionString: process.env.DB_CONN,
