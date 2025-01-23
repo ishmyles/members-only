@@ -1,9 +1,11 @@
 import { validationResult } from "express-validator";
+import asyncWrap from "express-async-handler";
+import { updateUserMemberType } from "../db/queries.js";
 
 export const authoriseUserGet = (req, res) =>
   res.render("form", { title: "Member Entry", formType: "member" });
 
-export const authoriseUserPost = (req, res) => {
+export const authoriseUserPost = asyncWrap(async (req, res) => {
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
@@ -14,7 +16,7 @@ export const authoriseUserPost = (req, res) => {
     });
   }
 
-  res.send(
-    "[POST] Form submitted. TODO: Validate user input & authorise user if input equal secret"
-  );
-};
+  await updateUserMemberType("ishmyles", "member"); //TODO: Change hardcoded value
+
+  res.redirect("/");
+});

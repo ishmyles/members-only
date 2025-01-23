@@ -36,7 +36,7 @@ CREATE TABLE Messages (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     title VARCHAR(50),
     text VARCHAR(255),
-    createdAt TIMESTAMP(6) NOT NULL,
+    createdAt TIMESTAMP(6) DEFAULT CURRENT_TIMESTAMP,
     createdBy VARCHAR(25),
     FOREIGN KEY (createdBy) REFERENCES Users (username) ON DELETE CASCADE
 );
@@ -45,6 +45,10 @@ INSERT INTO MemberTypes (id, type) VALUES
 (0, 'Admin'),
 (1, 'Guest'),
 (2, 'Member');
+
+INSERT INTO Users (username, firstname, lastname, password, membertype)
+VALUES 
+('ishmyles', 'Myles', 'GG', 'Test', 0);
 
 SELECT * FROM MemberTypes;
 `;

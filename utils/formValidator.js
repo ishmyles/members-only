@@ -1,13 +1,13 @@
 import { body } from "express-validator";
+import { getUsernameById } from "../db/queries.js";
 
 export const signupValidator = [
   body("username")
     .notEmpty()
     .withMessage("Must enter a username")
     .custom(async (value) => {
-      // TODO: Connect to db to see if user exists
-      // if (!user) return Promise.reject();
-      return Promise.resolve();
+      const user = await getUsernameById(value);
+      return !user[0] ? Promise.resolve() : Promise.reject();
     })
     .withMessage("Username already taken"),
   body("firstname").notEmpty().withMessage("Must enter first name"),

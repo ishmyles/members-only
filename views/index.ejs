@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OnlyMembers</title>
+    <link rel="stylesheet" href="/styles/index.css">
+</head>
+<body>
+    <h1>Messages</h1>
+    
+    <% if (locals.messages) { %>
+        <% messages.forEach(msg => { %>
+            <div class="card">
+                <h2><%= msg.title %></h2>
+                <p><%= msg.text %></p>
+                <div class="meta-data">
+                    <p><%= msg.createdby %></p>
+                    <p><%= msg.createdat.toLocaleString() %></p>
+                </div>
+                <form action="/messages/delete/<%= msg.id %>" method="post">
+                    <button type="submit">DELETE</button>
+                </form>
+            </div>
+        <% }); %>
+    <% } else { %>
+        <p>There are currently no messages, log in to add one!</p>
+    <% } %>
+</body>
+</html>
