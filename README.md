@@ -15,8 +15,8 @@ This repository contains a simple application that demonstrates the concepts of 
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/ishmyles/inventory-app.git
-   cd inventory-app
+   git clone https://github.com/ishmyles/members-only.git
+   cd members-only
    ```
 
 2. **Install dependencies**:
