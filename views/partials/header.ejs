@@ -4,19 +4,15 @@
             <a href="/">HOME</a>
         </li>
         <% if (locals.isLoggedIn) { %>
-        <li>
-            <a href="/member/join">JOIN THE CLUB</a>
-        </li>
-        <li>
-            <a href="/admin/new">BE A MODERATOR</a>
-        </li>
-        <li>
-            <a href="/messages/new">ADD MESSAGE</a>
-        </li>
-        <% } else { %>
-        <li>
-            <a href="/sign-up">SIGN UP</a>
-        </li>
+            <li>
+                <a href="/member/join">JOIN THE CLUB</a>
+            </li>
+            <li>
+                <a href="/admin/new">BE A MODERATOR</a>
+            </li>
+            <li>
+                <a href="/messages/new">ADD MESSAGE</a>
+            </li>
         <% } %>
     </ul>
     <ul>
