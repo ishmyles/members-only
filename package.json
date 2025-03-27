@@ -2,9 +2,10 @@
   "name": "members-only",
   "version": "1.0.0",
   "description": "A simple application that demonstrates the concepts of authentication &amp; authorisation",
-  "main": "index.js",
+  "main": "app.js",
   "type":"module",
   "scripts": {
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "seedData": "node --env-file .env db/seedData.js"
   },
