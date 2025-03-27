@@ -2,6 +2,8 @@
 
 This repository contains a simple application that demonstrates the concepts of authentication &amp; authorisation.
 
+- Check out the [live preview](https://members-only-production-6cc8.up.railway.app/)
+
 ## Technologies Used
 
 - Node
